@@ -85,18 +85,22 @@ export default function RapeGangInquirySite() {
           <circle cx="260" cy="370" r="10" />
           <circle cx="295" cy="260" r="12" />
         </g>
-        {/* Accessible clickable region labels (buttons in SVG) */}
+        {/* Accessible clickable region labels - larger for readability */}
         <g className="cursor-pointer" onClick={() => setSelectedRegion('YORKSHIRE')}>
-          <text x="310" y="260" fill="#f5f5f4" fontSize="10" className="ui-label">YORKSHIRE</text>
+          <rect x="285" y="248" width="70" height="16" rx="2" fill="#1a1a1a" opacity="0.7" />
+          <text x="320" y="260" fill="#f5f5f4" fontSize="11" className="ui-label" textAnchor="middle">YORKSHIRE</text>
         </g>
         <g className="cursor-pointer" onClick={() => setSelectedRegion('GTR MANCHESTER')}>
-          <text x="265" y="295" fill="#f5f5f4" fontSize="9" className="ui-label">GTR MANCHESTER</text>
+          <rect x="235" y="283" width="90" height="16" rx="2" fill="#1a1a1a" opacity="0.7" />
+          <text x="280" y="295" fill="#f5f5f4" fontSize="10" className="ui-label" textAnchor="middle">GTR MANCHESTER</text>
         </g>
         <g className="cursor-pointer" onClick={() => setSelectedRegion('WEST MIDS')}>
-          <text x="285" y="375" fill="#f5f5f4" fontSize="9" className="ui-label">WEST MIDS</text>
+          <rect x="255" y="363" width="70" height="16" rx="2" fill="#1a1a1a" opacity="0.7" />
+          <text x="290" y="375" fill="#f5f5f4" fontSize="10" className="ui-label" textAnchor="middle">WEST MIDS</text>
         </g>
         <g className="cursor-pointer" onClick={() => setSelectedRegion('LONDON')}>
-          <text x="345" y="460" fill="#f5f5f4" fontSize="9" className="ui-label">LONDON</text>
+          <rect x="318" y="448" width="55" height="16" rx="2" fill="#1a1a1a" opacity="0.7" />
+          <text x="345" y="460" fill="#f5f5f4" fontSize="10" className="ui-label" textAnchor="middle">LONDON</text>
         </g>
       </svg>
 
@@ -113,12 +117,12 @@ export default function RapeGangInquirySite() {
   // Conviction bar (Quilliam 264)
   const ConvictionBar = () => (
     <div className="my-4 max-w-md">
-      <div className="flex items-end gap-3 h-8">
-        <div className="flex-1 bg-[#7f1d1d]" style={{ width: '84%' }} title="84% South Asian" />
-        <div className="flex-1 bg-[#3f3f3f]" style={{ width: '7%' }} title="7% White" />
-        <div className="flex-1 bg-[#3f3f3f]" style={{ width: '8%' }} title="8% Black" />
+      <div className="flex items-end gap-2 h-10">
+        <div className="flex-1 bg-[#7f1d1d] rounded-sm" style={{ width: '84%' }} title="84% South Asian" />
+        <div className="flex-1 bg-[#3f3f3f] rounded-sm" style={{ width: '7%' }} title="7% White" />
+        <div className="flex-1 bg-[#3f3f3f] rounded-sm" style={{ width: '8%' }} title="8% Black" />
       </div>
-      <div className="flex justify-between text-xs mt-1.5 text-[#c9c9c9] ui-label font-medium">
+      <div className="flex justify-between text-sm mt-2 text-[#d1d1d1] ui-label font-medium">
         <div>84% South Asian (222)</div>
         <div>7% White</div>
         <div>8% Black</div>
@@ -129,20 +133,20 @@ export default function RapeGangInquirySite() {
 
   // Vote split bar (364–111)
   const VoteBar = () => (
-    <div className="my-4">
-      <div className="flex h-6 rounded overflow-hidden border border-[#262626]">
-        <div className="bg-[#7f1d1d] flex items-center justify-center text-[10px] ui-label" style={{ width: `${(364 / (364 + 111)) * 100}%` }}>
+    <div className="my-4 max-w-md">
+      <div className="flex h-8 rounded-sm overflow-hidden border border-[#262626]">
+        <div className="bg-[#7f1d1d] flex items-center justify-center text-sm ui-label font-medium" style={{ width: `${(364 / (364 + 111)) * 100}%` }}>
           364
         </div>
-        <div className="bg-[#3f3f3f] flex items-center justify-center text-[10px] ui-label" style={{ width: `${(111 / (364 + 111)) * 100}%` }}>
+        <div className="bg-[#3f3f3f] flex items-center justify-center text-sm ui-label font-medium" style={{ width: `${(111 / (364 + 111)) * 100}%` }}>
           111
         </div>
       </div>
-      <div className="flex justify-between text-xs mt-1.5 text-[#c9c9c9] ui-label font-medium">
+      <div className="flex justify-between text-sm mt-2 text-[#d1d1d1] ui-label font-medium">
         <div>Against (Labour-led vote)</div>
         <div>For the inquiry</div>
       </div>
-      <p className="text-xs text-[#a3a3a3] mt-1">January 2025 Commons vote on Conservative amendment. The government later ordered a narrower inquiry whose terms of reference were criticised for excluding the demographic, cultural and religious drivers.</p>
+      <p className="text-xs text-[#a3a3a3] mt-2">January 2025 Commons vote on Conservative amendment. The government later ordered a narrower inquiry whose terms of reference were criticised for excluding the demographic, cultural and religious drivers.</p>
     </div>
   );
 
@@ -160,7 +164,7 @@ export default function RapeGangInquirySite() {
             </p>
             <p className="mt-3 text-sm ui-label text-[#a3a3a3]">Chaired by Rupert Lowe MP · Led by Sammy Woodhouse</p>
 
-            <div className="mt-8 max-w-2xl text-[15px] leading-relaxed text-[#d1d1d1]">
+            <div className="mt-8 max-w-2xl text-base leading-relaxed text-[#d1d1d1]">
               The Rape Gang Inquiry examined the systematic targeting of vulnerable girls, overwhelmingly White British, by predominantly Muslim Pakistani gangs across towns and cities throughout the United Kingdom. The evidence confirms that this scandal constitutes one of the most horrendous failures in the history of the country.
             </div>
 
@@ -169,12 +173,12 @@ export default function RapeGangInquirySite() {
               <div className="border border-[#262626] p-6">
                 <div className="stat">250,000</div>
                 <div className="mt-1 text-sm text-[#a3a3a3] ui-label">Minimum estimated victims</div>
-                <div className="mt-2 text-xs text-[#a3a3a3]">Lord Pearson (House of Lords, 14 May 2019), extrapolated from the Jay Report on Rotherham, the Telford Inquiry, and the confirmed national footprint across 149 districts. The true number is probably higher.</div>
+                <div className="mt-2 text-sm text-[#a3a3a3]">Lord Pearson (House of Lords, 14 May 2019), extrapolated from the Jay Report on Rotherham, the Telford Inquiry, and the confirmed national footprint across 149 districts. The true number is probably higher.</div>
               </div>
               <div className="border border-[#262626] p-6">
                 <div className="stat">149</div>
                 <div className="mt-1 text-sm text-[#a3a3a3] ui-label">Local authority districts affected</div>
-                <div className="mt-2 text-xs text-[#a3a3a3]">Close to 40% of all such districts across the United Kingdom. The same patterns repeated from Aberdeen to the south coast and in London.</div>
+                <div className="mt-2 text-sm text-[#a3a3a3]">Close to 40% of all such districts across the United Kingdom. The same patterns repeated from Aberdeen to the south coast and in London.</div>
               </div>
             </div>
           </div>
@@ -197,8 +201,8 @@ export default function RapeGangInquirySite() {
             <div className="mt-4 text-sm">
               <input
                 type="text"
-                placeholder="Filter districts (e.g. Rotherham, London, Birmingham)..."
-                className="w-full max-w-md bg-transparent border border-[#262626] px-3 py-2 text-sm placeholder:text-[#666] focus:outline focus:outline-1 focus:outline-[#7f1d1d]"
+                placeholder="Filter the 149 districts…"
+                className="w-full max-w-sm bg-transparent border border-[#262626] px-3 py-2 text-sm placeholder:text-[#666] focus:outline focus:outline-1 focus:outline-[#7f1d1d] rounded"
                 onChange={(e) => {
                   const val = e.target.value.toLowerCase();
                   const list = document.getElementById('district-list');
@@ -214,7 +218,7 @@ export default function RapeGangInquirySite() {
                   <div key={i} className="text-[#c9c9c9] hover:text-[#f5f5f4] cursor-default">{d}</div>
                 ))}
               </div>
-              <p className="text-xs text-[#a3a3a3] mt-2">Full list from Appendix IV. 149 districts confirmed by the Inquiry. The map above highlights major documented concentrations.</p>
+              <p className="text-sm text-[#a3a3a3] mt-2">Full list from Appendix IV. 149 districts confirmed by the Inquiry. The map above highlights major documented concentrations.</p>
             </div>
           </div>
 
@@ -241,7 +245,7 @@ export default function RapeGangInquirySite() {
             <p>Rape gangs operated on an industrial scale using a repeatable method that was documented in every major inquiry and in the testimony heard by this Inquiry.</p>
           </div>
 
-          <div className="mt-8 space-y-6 max-w-3xl">
+          <div className="mt-8 space-y-5 max-w-3xl">
             {[
               "Girls as young as 11 were befriended by a young Muslim man who treated the child like an adult and began supplying alcohol, drugs and cigarettes.",
               "After a few months the girls were collected from school gates, care homes and streets in taxis and taken to houses, flats, restaurants and hotels.",
@@ -250,13 +254,13 @@ export default function RapeGangInquirySite() {
               "The same girls were trafficked between towns and cities, passed between multiple adult men, and in many cases forced into Islamic 'marriage' or conversion as a further instrument of control.",
               "Taxis formed the central logistical backbone. Drivers collected, transported, and returned victims. Some women in the community acted as recruiters or facilitators in exchange for gifts or money."
             ].map((step, idx) => (
-              <div key={idx} className="step flex text-[15px] leading-relaxed">
-                <span className="mt-0.5 text-[#7f1d1d] font-mono w-6">{idx + 1}.</span>
-                <span>{step}</span>
+              <div key={idx} className="flex gap-3 text-[15px] leading-relaxed">
+                <span className="mt-0.5 flex-shrink-0 text-[#7f1d1d] font-mono w-6 text-right">{idx + 1}.</span>
+                <span className="text-[#e5e5e5]">{step}</span>
               </div>
             ))}
           </div>
-          <p className="mt-6 text-sm text-[#a3a3a3] max-w-3xl">These tactics were not local aberrations. They were replicated with near-identical patterns in at least 149 districts. The perpetrators bore primary responsibility; the institutions that enabled them for decades share the shame.</p>
+          <p className="mt-6 text-[15px] text-[#a3a3a3] max-w-3xl">These tactics were not local aberrations. They were replicated with near-identical patterns in at least 149 districts. The perpetrators bore primary responsibility; the institutions that enabled them for decades share the shame.</p>
         </section>
 
         {/* SURVIVOR TESTIMONY — CORE */}
@@ -266,20 +270,20 @@ export default function RapeGangInquirySite() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {survivors.map((s) => (
-              <div key={s.id} className="card p-5 bg-[#111] flex flex-col">
-                <div className="font-semibold text-lg">{s.name}</div>
-                <div className="mt-2 text-sm text-[#c9c9c9] flex-1 line-clamp-4">{s.summary}</div>
+              <div key={s.id} className="card p-5 flex flex-col">
+                <div className="font-semibold text-lg tracking-tight">{s.name}</div>
+                <div className="mt-2 text-sm text-[#c9c9c9] flex-1 line-clamp-4 leading-snug">{s.summary}</div>
                 <button
                   onClick={() => openSurvivor(s.id)}
-                  className="mt-4 self-start text-sm border border-[#262626] px-3 py-1.5 rounded hover:bg-[#1a1a1a] focus:outline focus:outline-2 focus:outline-[#7f1d1d] ui-label"
+                  className="mt-4 self-start text-xs border border-[#262626] px-3 py-1.5 rounded hover:bg-[#1a1a1a] focus:outline focus:outline-2 focus:outline-[#7f1d1d] ui-label"
                 >
-                  Read testimony
+                  Read full testimony →
                 </button>
               </div>
             ))}
           </div>
 
-          <p className="mt-6 text-xs text-[#a3a3a3]">All names are pseudonyms as used in the report. Direct pull-quotes highlighted by the Inquiry itself are rendered in the modals as blockquotes with the accent border.</p>
+          <p className="mt-6 text-sm text-[#a3a3a3]">All names are pseudonyms as used in the report. Direct pull-quotes highlighted by the Inquiry itself are rendered in the modals as blockquotes with the accent border.</p>
         </section>
 
         {/* DEMOGRAPHICS & CULTURE */}
@@ -303,7 +307,7 @@ export default function RapeGangInquirySite() {
         </section>
 
         {/* THE INFLUENCE OF ISLAM */}
-        <section id="influence-of-islam" className="max-w-5xl mx-auto px-6 pt-14 pb-12 border-b border-[#262626] scroll-mt-20">
+        <section id="influence-of-islam" className="max-w-5xl mx-auto px-6 pt-16 pb-14 border-b border-[#262626] scroll-mt-20">
           <h2 className="text-3xl font-semibold tracking-tight mb-6">The Influence of Islam</h2>
           <p className="max-w-3xl text-[#a3a3a3] mb-6">The Inquiry heard evidence that eight theological and legal aspects of Islam, filtered through clannish immigrant sub-cultures, provided religious justification that enabled the systematic rape of White British girls. These are presented as the report’s argument, with the Quranic citations rendered exactly as quoted in the source.</p>
 
@@ -312,7 +316,7 @@ export default function RapeGangInquirySite() {
               <button
                 key={t.id}
                 onClick={() => openTheology(t.id)}
-                className="card text-left p-5 bg-[#111] hover:border-[#3f3f3f] focus:outline focus:outline-2 focus:outline-[#7f1d1d]"
+                className="theology-card text-left p-5 hover:bg-[#161616] focus:outline focus:outline-2 focus:outline-[#7f1d1d]"
               >
                 <div className="font-semibold">{t.title}</div>
                 <div className="mt-2 text-sm text-[#c9c9c9] line-clamp-3">{t.claim}</div>
@@ -324,7 +328,7 @@ export default function RapeGangInquirySite() {
         </section>
 
         {/* INSTITUTIONAL FAILURES */}
-        <section id="institutional-failures" className="max-w-5xl mx-auto px-6 pt-14 pb-12 border-b border-[#262626] scroll-mt-20">
+        <section id="institutional-failures" className="max-w-5xl mx-auto px-6 pt-16 pb-14 border-b border-[#262626] scroll-mt-20">
           <h2 className="text-3xl font-semibold tracking-tight mb-6">Institutional Failures</h2>
           <div className="prose max-w-3xl mb-8">
             <p>Every institution that existed to protect children instead enabled the gangs. Police forces, social services, the NHS, schools, taxi licensing authorities, media organisations and the courts all failed — often catastrophically and for years.</p>
@@ -338,7 +342,7 @@ export default function RapeGangInquirySite() {
                   {inst.failures.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
                 {['police', 'social-care'].includes(inst.id) && (
-                  <button onClick={() => openFailure(inst.id)} className="mt-3 text-xs border border-[#262626] px-3 py-1 rounded hover:bg-[#1a1a1a] focus:outline focus:outline-2 focus:outline-[#7f1d1d] ui-label">
+                  <button onClick={() => openFailure(inst.id)} className="mt-3 text-sm border border-[#262626] px-3 py-1 rounded hover:bg-[#1a1a1a] focus:outline focus:outline-2 focus:outline-[#7f1d1d] ui-label">
                     VIEW NAMED INCIDENT
                   </button>
                 )}
@@ -348,7 +352,7 @@ export default function RapeGangInquirySite() {
         </section>
 
         {/* POLITICAL FAILURE */}
-        <section id="political-failure" className="max-w-5xl mx-auto px-6 pt-14 pb-12 border-b border-[#262626] scroll-mt-20">
+        <section id="political-failure" className="max-w-5xl mx-auto px-6 pt-16 pb-14 border-b border-[#262626] scroll-mt-20">
           <h2 className="text-3xl font-semibold tracking-tight mb-6">Political Failure</h2>
 
           <div className="prose max-w-3xl">

@@ -99,7 +99,7 @@ export function Modal({ open, onClose, title, contentWarning, children }: ModalP
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto pt-10 pb-16 modal-overlay"
+      className="fixed inset-0 z-[100] flex items-start justify-center overflow-y-auto pt-4 pb-4 md:pt-10 md:pb-16 modal-overlay"
       onClick={onClose}
       aria-hidden="true"
     >
@@ -108,18 +108,18 @@ export function Modal({ open, onClose, title, contentWarning, children }: ModalP
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
-        className="relative w-full max-w-4xl mx-4 rounded-lg modal-content shadow-xl"
+        className="relative w-full max-w-4xl mx-4 md:mx-auto rounded-lg modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-start justify-between border-b border-[#262626] px-6 py-4">
-          <h2 id="modal-title" className="text-xl font-semibold pr-8 text-[#f5f5f4]">
+        <div className="flex items-center justify-between border-b border-[#262626] px-6 py-3.5">
+          <h2 id="modal-title" className="text-lg md:text-xl font-semibold pr-4 text-[#f5f5f4]">
             {title}
           </h2>
           <button
             ref={closeButtonRef}
             onClick={onClose}
-            className="text-[#a3a3a3] hover:text-[#f5f5f4] p-1 rounded focus:outline focus:outline-2 focus:outline-[#7f1d1d]"
+            className="text-[#a3a3a3] hover:text-[#f5f5f4] p-1.5 -mr-1.5 rounded focus:outline focus:outline-2 focus:outline-[#7f1d1d]"
             aria-label="Close modal"
           >
             <X size={20} />
@@ -135,7 +135,7 @@ export function Modal({ open, onClose, title, contentWarning, children }: ModalP
         )}
 
         {/* Body */}
-        <div className="px-6 py-6 max-h-[72vh] overflow-y-auto text-[15.5px] leading-relaxed text-[#e5e5e5]">
+        <div className="px-6 py-6 max-h-[72vh] overflow-y-auto text-base leading-relaxed text-[#e5e5e5]">
           {children}
         </div>
 

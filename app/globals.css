@@ -49,7 +49,7 @@ small {
 .prose blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 1.25rem;
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: #e5e5e5;
   margin: 1.5rem 0;
 }
@@ -79,7 +79,7 @@ small {
   color: #f4a3a3;
 }
 
-/* Minimal nav */
+/* Header nav polish */
 nav a {
   transition: color 120ms ease;
 }
@@ -88,18 +88,27 @@ nav a.active {
   color: var(--accent);
 }
 
-/* Survivor cards, section cards */
+
+
+/* Cleaner cards for serious archival feel */
 .card {
   border: 1px solid var(--border);
-  transition: border-color 120ms ease;
+  background: #111;
+  transition: border-color 150ms ease, background 150ms ease;
 }
 .card:hover {
   border-color: #3f3f3f;
+  background: #161616;
 }
 
-/* Subtle scroll reveal helper (css only, JS enhances) */
-.reveal {
-  opacity: 1;
+/* Theology factor cards - slightly different treatment */
+.theology-card {
+  border-left: 3px solid var(--accent);
+  background: #111;
+  transition: background 150ms ease;
+}
+.theology-card:hover {
+  background: #161616;
 }
 
 /* Reduced motion */
@@ -136,22 +145,4 @@ a[role="button"] {
   min-height: 2.25rem; /* ~36px base; larger interactive areas on mobile */
 }
 
-/* Timeline / numbered for crimes */
-.step {
-  counter-increment: step;
-}
-.step:before {
-  content: counter(step);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
-  font-size: 0.85rem;
-  font-family: var(--font-sans);
-  margin-right: 0.75rem;
-  flex-shrink: 0;
-}
+/* (Timeline numbering handled inline in JSX for control and alignment) */

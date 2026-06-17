@@ -29,22 +29,22 @@ export default function FullReportPage() {
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-[#f5f5f4]">
       <div className="max-w-6xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between border-b border-[#262626]">
-        <Link href="/" className="ui-label text-sm hover:text-[#f5f5f4]">← Back to the site</Link>
-        <div className="text-sm ui-label text-[#a3a3a3]">Canonical full text — Rape Gang Inquiry Report</div>
+        <Link href="/" className="ui-label text-sm hover:text-[#f5f5f4] flex items-center gap-1">← Back to main site</Link>
+        <div className="text-xs md:text-sm ui-label text-[#a3a3a3]">The Rape Gang Inquiry — Full Report</div>
       </div>
 
       <div className="max-w-6xl mx-auto px-6 pt-10 pb-16 flex flex-col lg:flex-row gap-10">
         {/* Sidebar ToC */}
         <aside className="lg:w-64 shrink-0 lg:sticky lg:top-8 self-start">
           <div className="text-xs ui-label tracking-widest mb-3 text-[#a3a3a3]">CONTENTS (derived)</div>
-          <nav className="text-sm space-y-1 max-h-[70vh] overflow-auto pr-3 border-l border-[#262626] pl-3">
+          <nav className="text-sm space-y-0.5 max-h-[70vh] overflow-auto pr-3 border-l border-[#262626] pl-3">
             {toc.map((h, i) => {
               const id = h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 80);
               return (
-                <a key={i} href={`#${id}`} className="block py-0.5 text-[#c9c9c9] hover:text-[#f5f5f4]">{h}</a>
+                <a key={i} href={`#${id}`} className="block py-1 text-[#c9c9c9] hover:text-[#f5f5f4] hover:pl-0.5 transition-all">{h}</a>
               );
             })}
-            <div className="pt-3 text-[10px] text-[#666]">The complete report follows. All headings in the body are anchor-linked.</div>
+            <div className="pt-4 text-xs text-[#888]">The complete report follows. All headings in the body are anchor-linked.</div>
           </nav>
         </aside>
 
@@ -52,10 +52,10 @@ export default function FullReportPage() {
         <article className="flex-1 max-w-3xl">
           <h1 className="text-4xl font-semibold tracking-tight mb-8">The Rape Gang Inquiry Report</h1>
           <div
-            className="prose max-w-none"
+            className="prose"
             dangerouslySetInnerHTML={{ __html: htmlWithIds }}
           />
-          <div className="mt-12 pt-8 border-t border-[#262626] text-xs text-[#a3a3a3]">
+          <div className="mt-12 pt-8 border-t border-[#262626] text-sm text-[#a3a3a3]">
             End of the canonical report text. This page is a static rendering of the source markdown for archival fidelity.
           </div>
         </article>
