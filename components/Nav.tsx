@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
 const navItems = [
   { href: '#overview', label: 'Overview' },
@@ -21,7 +22,6 @@ interface NavProps {
 export function Nav({ activeSection }: NavProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Close mobile menu on Escape key
   React.useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
@@ -32,26 +32,28 @@ export function Nav({ activeSection }: NavProps) {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [mobileMenuOpen]);
 
-  // Close mobile menu when clicking outside
   React.useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (mobileMenuOpen && !target.closest('.mobile-nav-container')) {
-        setMobileMenuOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
   }, [mobileMenuOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur border-b border-[#262626]">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between py-3">
-          <a href="#top" className="font-semibold tracking-tight text-[#f5f5f4] ui-label text-sm md:text-base shrink-0">THE RAPE GANG INQUIRY</a>
+    <nav className="sticky top-0 z-50 bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--border-subtle)]">
+      <div className="max-w-[var(--page-max)] mx-auto px-5 sm:px-6">
+        <div className="flex items-center justify-between h-14">
+          <a
+            href="#top"
+            className="font-semibold tracking-tight text-[var(--text)] ui-label text-xs sm:text-sm shrink-0 no-underline hover:text-[var(--text)]"
+          >
+            THE RAPE GANG INQUIRY
+          </a>
 
-          {/* Desktop nav - compact, fits all items cleanly without scroll */}
-          <div className="hidden lg:flex items-center gap-x-2.5 xl:gap-x-3.5 text-[13px] xl:text-sm">
+          {/* Desktop nav */}
+          <div className="hidden lg:flex items-center gap-x-4 xl:gap-x-5">
             {navItems.map((item) => {
               const isActive = item.href.startsWith('#')
                 ? activeSection === item.href.slice(1)
@@ -60,7 +62,7 @@ export function Nav({ activeSection }: NavProps) {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`ui-label whitespace-nowrap px-1 py-0.5 transition-colors ${isActive ? 'active text-[#7f1d1d] font-medium' : 'text-[#a3a3a3] hover:text-[#f5f5f4]'}`}
+                  className={`nav-link ${isActive ? 'active' : ''}`}
                 >
                   {item.label}
                 </a>
@@ -68,39 +70,44 @@ export function Nav({ activeSection }: NavProps) {
             })}
           </div>
 
-          {/* Mobile / Tablet menu button + improved dropdown */}
-          <div className="lg:hidden relative mobile-nav-container">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="ui-label text-xs px-3 py-1.5 border border-[#262626] rounded hover:bg-[#1a1a1a] focus:outline focus:outline-2 focus:outline-[#7f1d1d] active:bg-[#222]"
-              aria-expanded={mobileMenuOpen}
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? 'Close' : 'Menu'}
-            </button>
-
-            {mobileMenuOpen && (
-              <div className="absolute right-0 mt-2 w-60 bg-[#0f0f0f] border border-[#262626] rounded-md shadow-xl py-1.5 z-50 text-sm">
-                {navItems.map((item) => {
-                  const isActive = item.href.startsWith('#')
-                    ? activeSection === item.href.slice(1)
-                    : false;
-                  return (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`block px-4 py-2 ui-label transition-colors ${isActive ? 'text-[#7f1d1d] bg-[#1a1a1a]' : 'text-[#c9c9c9] hover:bg-[#1a1a1a] hover:text-[#f5f5f4]'}`}
-                    >
-                      {item.label}
-                    </a>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden flex items-center justify-center w-10 h-10 text-[var(--text-muted)] hover:text-[var(--text)] transition-colors"
+            aria-expanded={mobileMenuOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile full-screen menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 top-14 z-40 bg-[var(--bg)]/98 backdrop-blur-sm">
+          <div className="px-5 py-6 space-y-1 overflow-y-auto max-h-[calc(100vh-3.5rem)]">
+            {navItems.map((item) => {
+              const isActive = item.href.startsWith('#')
+                ? activeSection === item.href.slice(1)
+                : false;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block py-3 px-4 ui-label text-base border-l-2 transition-colors no-underline ${
+                    isActive
+                      ? 'border-[var(--accent)] text-[var(--accent)] bg-[var(--bg-subtle)]'
+                      : 'border-transparent text-[var(--text-secondary)] hover:border-[var(--border)] hover:bg-[var(--bg-elevated)]'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
