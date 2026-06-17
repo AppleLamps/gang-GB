@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local development / agent instruction files
+# (present in some environments; do not commit to public repo)
+AGENTS.md
+CLAUDE.md
+.grok/
+.claude/
+.cursor/
+
+# macOS / Windows noise (in addition to .DS_Store above)
+Thumbs.db
+ehthumbs.db
+Desktop.ini

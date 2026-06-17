@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Rape Gang Inquiry — Static Site
 
-## Getting Started
+A restrained, somber static website presenting the full Rape Gang Inquiry report.
 
-First, run the development server:
+- Next.js App Router, TypeScript, Tailwind
+- `output: "export"` → fully static (`/out`)
+- No server, no API routes, no dynamic features
+- Deploy target: Vercel (static)
+
+## Build
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The static export is produced in `./out`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Push to a Git repository and import on Vercel. The framework detection will handle the static export automatically.
 
-## Learn More
+Or serve the `out/` directory with any static host.
 
-To learn more about Next.js, take a look at the following resources:
+## Source
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The canonical report text lives at `report/The+Rape+Gang+Inquiry+Report.md` (and mirrored as `report.md` / `content/report.md` for the site and parser). All survivor testimony, statistics, theological analysis, institutional failures, political record, and recommendations are drawn directly from it and presented without editorial softening or omission.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What this site is
 
-## Deploy on Vercel
+An archival, evidentiary presentation of the report. Dark, serif-led, minimal chrome. Full survivor testimony behind content warnings. Verbatim quotes. The 149-district map (SVG + list). The eight theological factors. Named institutional failures. The 364–111 vote. The complete recommendations including the proposed Childhood Sexual Exploitation Act and Sammy’s Law.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+No comments. No donations. No social buttons on testimony. No imagery of children or survivors.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Verification
+
+`npm run build` must complete cleanly and produce a working static export. All quoted material, statistics, and named cases match the source report.
+
+---
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
